@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Lista de Restaurantes</string>
+    
+    <string-array name="typeList">
+        <item>Tipo do Restaurante</item>
+        <item>Buffet</item>
+        <item>Fast Food</item>
+        <item>Rodízio</item>
+    </string-array>
+
+    <string name="titleDialog">Restaurante</string>
+    <string name="btnDialog">Adicionar</string>
+    <string name="enderecoDialog">Endereço</string>
+    <string name="nomeDialog">Nome</string>
+
+</resources>
