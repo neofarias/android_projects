@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lv = findViewById(R.id.listView);
+        registerForContextMenu(lv);
 
        /* lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -127,5 +129,27 @@ public class MainActivity extends AppCompatActivity {
             displayInputDialog();
         }
             return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        switch (item.getItemId()){
+            case R.id.update:
+                //lv.updateViewLayout();
+            case R.id.delete:
+                lv.removeViewAt(info.position);
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
     }
 }
