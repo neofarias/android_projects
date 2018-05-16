@@ -49,41 +49,4 @@ public class Crud extends BaseAdapter{
         return v;
     }
 
-    /*
-<<<<<<< HEAD
-    public void save(String name, String endereco, String tipo) {
-        Restaurante restaurante = new Restaurante();
-        restaurante.setNome(name);
-        restaurante.setEndereco(endereco);
-        restaurante.setTipo(tipo);
-    }
-
-
-=======
->>>>>>> New updates in project
-    public Boolean update(int position,String newName) {
-        try {
-            //names.remove(position);
-           // names.add(position,newName);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-<<<<<<< HEAD
-    }
-
-    public Boolean delete(int position) {
-        try {
-            //names.remove(position);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }*/
-=======
-    }*/
-
->>>>>>> New updates in project
 }
