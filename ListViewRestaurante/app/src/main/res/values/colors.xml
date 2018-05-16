@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
+    <color name="colorAddress">#000000</color>
     <color name="colorBtnDialog">#009968</color>
-
+    <color name="colorType">#006002</color>
 </resources>
