@@ -1,0 +1,4 @@
+#Fri Apr 20 17:21:45 BRT 2018
+base.0=/usr/local/java/android/projects/Calculadora/app/build/intermediates/transforms/dexMerger/debug/29
+path.0=classes.dex
+renamed.0=classes.dex

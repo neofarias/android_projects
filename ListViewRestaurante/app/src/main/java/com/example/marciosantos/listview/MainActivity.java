@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private Dialog d;
     private Spinner spinner;
     private String value = "";
+<<<<<<< HEAD
+=======
+    private EditText nameEditTxt, enderecoEditTxt;
+    private int idRestaurante = 0;
+>>>>>>> New updates in project
     private List listRestaurante = new ArrayList();;
     private Restaurante restaurante;
 
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+<<<<<<< HEAD
 
         lv = findViewById(R.id.listView);
         registerForContextMenu(lv);
@@ -55,18 +61,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+=======
+        lv = findViewById(R.id.listView);
+        registerForContextMenu(lv);
+
+>>>>>>> New updates in project
         ActionBar actionBar = getSupportActionBar();
         actionBar.setLogo(R.drawable.ic_plus);
         actionBar.setDisplayUseLogoEnabled(true);
     }
 
+<<<<<<< HEAD
     private void displayInputDialog() {
+=======
+    private void displayInputDialog(String newName, String newEndereco, String newValue, final int position) {
+>>>>>>> New updates in project
         d=new Dialog(this);
         d.setContentView(R.layout.inputdialog);
         d.setTitle(R.string.titleDialog);
 
+<<<<<<< HEAD
         final EditText nameEditTxt = d.findViewById(R.id.nome);
         final EditText enderecoEditTxt = d.findViewById(R.id.endereco);
+=======
+        nameEditTxt = d.findViewById(R.id.nome);
+        enderecoEditTxt = d.findViewById(R.id.endereco);
+>>>>>>> New updates in project
         Button addBtn = d.findViewById(R.id.addBtn);
 
         //Spinner
@@ -88,6 +108,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
+        if(newName != null && newEndereco != null && newValue != null){
+            nameEditTxt.setText(newName);
+            enderecoEditTxt.setText(newEndereco);
+            spinner.setTag(newValue);
+        }
+
+>>>>>>> New updates in project
         addBtn.setEnabled(true);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +131,13 @@ public class MainActivity extends AppCompatActivity {
                     restaurante.setNome(name);
                     restaurante.setEndereco(endereco);
                     restaurante.setTipo(value);
+<<<<<<< HEAD
                     listRestaurante.add(restaurante);
+=======
+                    restaurante.setId(position);
+                    listRestaurante.add(restaurante);
+                    idRestaurante ++;
+>>>>>>> New updates in project
 
                     adapter = new Crud(getApplicationContext(), listRestaurante);
                     lv.setAdapter(adapter);
@@ -126,7 +161,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_id:
+<<<<<<< HEAD
             displayInputDialog();
+=======
+            displayInputDialog(null, null, null, idRestaurante);
+>>>>>>> New updates in project
         }
             return super.onOptionsItemSelected(item);
     }
@@ -144,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.update:
+<<<<<<< HEAD
                 //lv.updateViewLayout();
             case R.id.delete:
                 lv.removeViewAt(info.position);
@@ -151,5 +191,26 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onContextItemSelected(item);
+=======
+                updateItemList(info.position);
+                return true;
+            case R.id.delete:
+                deleteItemList(info.position);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    public void deleteItemList(int position){
+        listRestaurante.remove(position);
+        adapter.notifyDataSetChanged();
+        Toast.makeText(MainActivity.this, "Registro excluído com sucesso!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void updateItemList(int position){
+        Restaurante restaurante = (Restaurante) listRestaurante.get(position);
+        displayInputDialog(restaurante.getNome(), restaurante.getEndereco(), restaurante.getTipo(), restaurante.getId());
+>>>>>>> New updates in project
     }
 }

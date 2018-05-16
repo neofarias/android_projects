@@ -50,6 +50,7 @@ public class Crud extends BaseAdapter{
     }
 
     /*
+<<<<<<< HEAD
     public void save(String name, String endereco, String tipo) {
         Restaurante restaurante = new Restaurante();
         restaurante.setNome(name);
@@ -58,6 +59,8 @@ public class Crud extends BaseAdapter{
     }
 
 
+=======
+>>>>>>> New updates in project
     public Boolean update(int position,String newName) {
         try {
             //names.remove(position);
@@ -67,6 +70,7 @@ public class Crud extends BaseAdapter{
             e.printStackTrace();
             return false;
         }
+<<<<<<< HEAD
     }
 
     public Boolean delete(int position) {
@@ -78,4 +82,8 @@ public class Crud extends BaseAdapter{
             return false;
         }
     }*/
+=======
+    }*/
+
+>>>>>>> New updates in project
 }
