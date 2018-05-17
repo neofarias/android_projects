@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinner;
     private String value = "";
     private EditText nameEditTxt, enderecoEditTxt;
-    private int idRestaurante = 0;
+    private int idRestaurante = 0, imgId;
     private Button addBtn;
+    private ImageView imgTipo;
     private List listRestaurante = new ArrayList();
     private Restaurante restaurante;
 
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         lv = findViewById(R.id.listView);
         registerForContextMenu(lv);
+
+        imgTipo = findViewById(R.id.imageTipo);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setLogo(R.drawable.ic_plus);
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
                 value = item.toString();
+                imgId = position;
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -113,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     restaurante.setEndereco(endereco);
                     restaurante.setTipo(value);
                     restaurante.setId(position);
+                    configImage();
                     listRestaurante.add(restaurante);
                     idRestaurante ++;
 
@@ -175,5 +181,15 @@ public class MainActivity extends AppCompatActivity {
     public void updateItemList(int position){
         Restaurante restaurante = (Restaurante) listRestaurante.get(position);
         displayInputDialog(restaurante.getNome(), restaurante.getEndereco(), restaurante.getId());
+    }
+
+    public void configImage(){
+        if(imgId == 0){
+            imgTipo.setImageDrawable(getResources().getDrawable(R.drawable.ic_buffet));
+        } else if(imgId == 1){
+            imgTipo.setImageDrawable(getResources().getDrawable(R.drawable.ic_fast_food));
+        } else if(imgId == 2){
+            imgTipo.setImageDrawable(getResources().getDrawable(R.drawable.ic_if_food_dome_379338));
+        }
     }
 }
