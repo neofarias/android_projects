@@ -6,4 +6,5 @@
     <color name="colorAddress">#000000</color>
     <color name="colorBtnDialog">#009968</color>
     <color name="colorType">#006002</color>
+    <color name="colorBtnUpdate">#0085be</color>
 </resources>

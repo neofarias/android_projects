@@ -72,9 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorBtnDialog"
                 android:clickable="true"
-                android:text="@string/btnDialog"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>

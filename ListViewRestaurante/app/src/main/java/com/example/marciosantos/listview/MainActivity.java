@@ -1,6 +1,8 @@
 package com.example.marciosantos.listview;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private String value = "";
     private EditText nameEditTxt, enderecoEditTxt;
     private int idRestaurante = 0;
-    private List listRestaurante = new ArrayList();;
+    private Button addBtn;
+    private List listRestaurante = new ArrayList();
     private Restaurante restaurante;
 
     @Override
@@ -44,22 +47,22 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.listView);
         registerForContextMenu(lv);
 
-        lv = findViewById(R.id.listView);
-        registerForContextMenu(lv);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setLogo(R.drawable.ic_plus);
         actionBar.setDisplayUseLogoEnabled(true);
     }
 
-    private void displayInputDialog(String newName, String newEndereco, String newValue, final int position) {
+    @SuppressLint("ResourceType")
+    private void displayInputDialog(final String newName, final String newEndereco, final int position) {
         d=new Dialog(this);
         d.setContentView(R.layout.inputdialog);
         d.setTitle(R.string.titleDialog);
 
         nameEditTxt = d.findViewById(R.id.nome);
         enderecoEditTxt = d.findViewById(R.id.endereco);
-        Button addBtn = d.findViewById(R.id.addBtn);
+        addBtn = d.findViewById(R.id.addBtn);
+        addBtn.setBackgroundResource(R.color.colorBtnDialog);
+        addBtn.setText(R.string.btnDialogAdd);
 
         //Spinner
         spinner = d.findViewById(R.id.spinnerTipos);
@@ -80,22 +83,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(newName != null && newEndereco != null && newValue != null){
+        if(newName != null && newEndereco != null){
+            addBtn.setBackgroundResource(R.color.colorBtnUpdate);
+            addBtn.setText(R.string.btnDialogUpdate);
+
             nameEditTxt.setText(newName);
             enderecoEditTxt.setText(newEndereco);
-            spinner.setTag(newValue);
         }
 
         addBtn.setEnabled(true);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //GET DATA
+
                 String name = nameEditTxt.getText().toString();
                 String endereco = enderecoEditTxt.getText().toString();
 
-                //Validate and Save
-                if(name.length()>0 && name != null) {
+            if(newName != null && newEndereco != null){
+                Restaurante updateRestaurante = (Restaurante) listRestaurante.get(position);
+                updateRestaurante.setNome(name);
+                updateRestaurante.setEndereco(endereco);
+                updateRestaurante.setTipo(value);
+                adapter.notifyDataSetChanged();
+                d.hide();
+                Toast.makeText(MainActivity.this, "Registro atualizado com sucesso!", Toast.LENGTH_LONG).show();
+            } else if(name.length() > 0 && name != null) {
                     restaurante = new Restaurante();
                     restaurante.setNome(name);
                     restaurante.setEndereco(endereco);
@@ -126,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_id:
-            displayInputDialog(null, null, null, idRestaurante);
+            displayInputDialog(null, null, idRestaurante);
         }
             return super.onOptionsItemSelected(item);
     }
@@ -162,6 +174,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateItemList(int position){
         Restaurante restaurante = (Restaurante) listRestaurante.get(position);
-        displayInputDialog(restaurante.getNome(), restaurante.getEndereco(), restaurante.getTipo(), restaurante.getId());
+        displayInputDialog(restaurante.getNome(), restaurante.getEndereco(), restaurante.getId());
     }
 }

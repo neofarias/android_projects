@@ -3,13 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/imageTipo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_weight="0.11"/>
 
     <TextView
         android:id="@+id/name_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/imageTipo"
         android:textSize="20dp"
         android:textColor="@color/colorPrimaryDark"/>
     
@@ -17,6 +29,8 @@
         android:id="@+id/endereco_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageTipo"
+        android:layout_below="@id/name_restaurant"
         android:textSize="16dp"
         android:textColor="@color/colorAddress"/>
 
@@ -24,7 +38,10 @@
         android:id="@+id/tipo_restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageTipo"
+        android:layout_below="@id/endereco_restaurant"
         android:textSize="12dp"
         android:textColor="@color/colorType"/>
 
+    </RelativeLayout>
 </LinearLayout>
