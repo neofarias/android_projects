@@ -12,5 +12,8 @@
     <string name="btnDialogUpdate">Atualizar</string>
     <string name="enderecoDialog">Endereço</string>
     <string name="nomeDialog">Nome</string>
-
+    <string name="msgExcluir">Registro excluído com sucesso!</string>
+    <string name="msgUpdate">Registro atualizado com sucesso!</string>
+    <string name="msgNomeVazio">Nome não pode ser vazio!</string>
+    <string name="msgEnderecoVazio">Endereço não pode ser vazio!</string>
 </resources>

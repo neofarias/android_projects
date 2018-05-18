@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 String name = nameEditTxt.getText().toString();
                 String endereco = enderecoEditTxt.getText().toString();
 
-            if(newName != null && newEndereco != null){
+            if(newName != null && newEndereco != null) {
                 Restaurante updateRestaurante = (Restaurante) listRestaurante.get(position);
                 updateRestaurante.setNome(name);
                 updateRestaurante.setEndereco(endereco);
@@ -109,23 +109,15 @@ public class MainActivity extends AppCompatActivity {
                 updateRestaurante.setIdImagem(imgId);
                 adapter.notifyDataSetChanged();
                 d.hide();
-                Toast.makeText(MainActivity.this, "Registro atualizado com sucesso!", Toast.LENGTH_LONG).show();
-            } else if(name.length() > 0 && name != null) {
-                    restaurante = new Restaurante();
-                    restaurante.setNome(name);
-                    restaurante.setEndereco(endereco);
-                    restaurante.setTipo(value);
-                    restaurante.setId(position);
-                    restaurante.setIdImagem(imgId);
-                    listRestaurante.add(restaurante);
-                    idRestaurante ++;
-
-                    adapter = new Crud(getApplicationContext(), listRestaurante);
-                    lv.setAdapter(adapter);
-                    d.hide();
+                Toast.makeText(MainActivity.this, R.string.msgUpdate, Toast.LENGTH_SHORT).show();
+            } else if(name.length() == 0 || name == null) {
+                Toast.makeText(MainActivity.this, R.string.msgNomeVazio, Toast.LENGTH_SHORT).show();
+                } else if(endereco.length() == 0 || endereco == null) {
+                    Toast.makeText(MainActivity.this, R.string.msgEnderecoVazio, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Nome não pode ser vazio", Toast.LENGTH_SHORT).show();
+                    salvaRegistro(name, endereco, position);
                 }
+
             }
         });
         d.show();
@@ -170,10 +162,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void salvaRegistro(String nome, String end, int pos){
+        restaurante = new Restaurante();
+        restaurante.setNome(nome);
+        restaurante.setEndereco(end);
+        restaurante.setTipo(value);
+        restaurante.setId(pos);
+        restaurante.setIdImagem(imgId);
+        listRestaurante.add(restaurante);
+        idRestaurante ++;
+
+        adapter = new Crud(getApplicationContext(), listRestaurante);
+        lv.setAdapter(adapter);
+        d.hide();
+    }
+
+
     public void deleteItemList(int position){
         listRestaurante.remove(position);
         adapter.notifyDataSetChanged();
-        Toast.makeText(MainActivity.this, "Registro excluído com sucesso!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, R.string.msgExcluir, Toast.LENGTH_SHORT).show();
     }
 
     public void updateItemList(int position){

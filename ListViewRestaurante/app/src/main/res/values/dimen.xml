@@ -3,4 +3,16 @@
     <dimen name="activity_vertical_margin">4dp</dimen>
     <dimen name="activity_horizontal_margin">4dp</dimen>
     <dimen name="fab_margin">4dp</dimen>
+    <dimen name="paddingFour">6dp</dimen>
+    <dimen name="paddingSix">6dp</dimen>
+    <dimen name="paddingSixteen">16dp</dimen>
+    <dimen name="paddingTen">10dp</dimen>
+    <dimen name="paddingTwelve">12dp</dimen>
+    <dimen name="paddingFourteen">14dp</dimen>
+    <dimen name="paddingFifteen">15dp</dimen>
+    <dimen name="paddingTwenty">20dp</dimen>
+    <dimen name="spinnerWidth">348dp</dimen>
+    <dimen name="spinnerHeight">38dp</dimen>
+    <dimen name="imageWidth">80dp</dimen>
+    <dimen name="imageHeight">80dp</dimen>
 </resources>

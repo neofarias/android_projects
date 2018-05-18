@@ -8,15 +8,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="@dimen/paddingTen">
 
     <ImageView
         android:id="@+id/imageTipo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/imageWidth"
+        android:layout_height="@dimen/imageHeight"
         android:layout_weight="0.11"
-        android:padding="5dp"
-        android:layout_marginRight="10dp"/>
+        android:padding="@dimen/paddingFour"
+        android:layout_marginRight="@dimen/paddingTen"/>
 
     <TextView
         android:id="@+id/name_restaurant"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/imageTipo"
-        android:textSize="20dp"
+        android:textSize="@dimen/paddingTwenty"
         android:textColor="@color/colorPrimaryDark"/>
     
     <TextView
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageTipo"
         android:layout_below="@id/name_restaurant"
-        android:textSize="14dp"
+        android:textSize="@dimen/paddingFourteen"
         android:textColor="@color/colorAddress"/>
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageTipo"
         android:layout_below="@id/endereco_restaurant"
-        android:textSize="12dp"
+        android:textSize="@dimen/paddingTwelve"
         android:textColor="@color/colorType"/>
 
     </RelativeLayout>
