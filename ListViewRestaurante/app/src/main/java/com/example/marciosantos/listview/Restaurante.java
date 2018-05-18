@@ -6,6 +6,7 @@ public class Restaurante {
     private String endereco;
     private String tipo;
     private int id;
+    private int idImagem;
 
     public String getNome() {
         return nome;
@@ -39,4 +40,11 @@ public class Restaurante {
         this.id = id;
     }
 
+    public int getIdImagem() {
+        return idImagem;
+    }
+
+    public void setIdImagem(int idImagem) {
+        this.idImagem = idImagem;
+    }
 }

@@ -8,13 +8,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp">
+        android:padding="10dp">
 
     <ImageView
         android:id="@+id/imageTipo"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_weight="0.11"/>
+        android:layout_weight="0.11"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:id="@+id/name_restaurant"
@@ -31,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageTipo"
         android:layout_below="@id/name_restaurant"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:textColor="@color/colorAddress"/>
 
     <TextView

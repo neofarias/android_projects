@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText nameEditTxt, enderecoEditTxt;
     private int idRestaurante = 0, imgId;
     private Button addBtn;
-    private ImageView imgTipo;
     private List listRestaurante = new ArrayList();
     private Restaurante restaurante;
 
@@ -48,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         lv = findViewById(R.id.listView);
         registerForContextMenu(lv);
-
-        imgTipo = findViewById(R.id.imageTipo);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setLogo(R.drawable.ic_plus);
@@ -109,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 updateRestaurante.setNome(name);
                 updateRestaurante.setEndereco(endereco);
                 updateRestaurante.setTipo(value);
+                updateRestaurante.setIdImagem(imgId);
                 adapter.notifyDataSetChanged();
                 d.hide();
                 Toast.makeText(MainActivity.this, "Registro atualizado com sucesso!", Toast.LENGTH_LONG).show();
@@ -118,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     restaurante.setEndereco(endereco);
                     restaurante.setTipo(value);
                     restaurante.setId(position);
-                    configImage();
+                    restaurante.setIdImagem(imgId);
                     listRestaurante.add(restaurante);
                     idRestaurante ++;
 
@@ -183,13 +181,4 @@ public class MainActivity extends AppCompatActivity {
         displayInputDialog(restaurante.getNome(), restaurante.getEndereco(), restaurante.getId());
     }
 
-    public void configImage(){
-        if(imgId == 0){
-            imgTipo.setImageDrawable(getResources().getDrawable(R.drawable.ic_buffet));
-        } else if(imgId == 1){
-            imgTipo.setImageDrawable(getResources().getDrawable(R.drawable.ic_fast_food));
-        } else if(imgId == 2){
-            imgTipo.setImageDrawable(getResources().getDrawable(R.drawable.ic_if_food_dome_379338));
-        }
-    }
 }
