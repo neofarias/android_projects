@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">projetoSQLite</string>
+    <string name="addOK">Registro salvo com sucesso!</string>
+    <string name="addError">Registro não foi salvo!</string>
+    <string name="saveError">Preencha todos os campos antes de salvar!</string>
+</resources>
