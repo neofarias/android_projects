@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,12 +14,16 @@ public class MainActivity extends AppCompatActivity {
     DataBaseHelper mDataBaseHelper;
     private Button btnAdd, btnView;
     private EditText nomeEditText, quantidadeEditText, tipoEditText;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDataBaseHelper = new DataBaseHelper(this);
+
+        lv = findViewById(R.id.listView);
+        registerForContextMenu(lv);
 
         nomeEditText = findViewById(R.id.nomeEditText);
         quantidadeEditText = findViewById(R.id.quantidadeEditText);

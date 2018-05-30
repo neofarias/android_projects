@@ -7,64 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <EditText
-            android:id="@+id/nomeEditText"
-            android:layout_width="322dp"
-            android:layout_height="44dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="31dp"
-            tools:layout_editor_absoluteY="29dp"
-            tools:text="Nome" />
-
-
-        <EditText
-            android:id="@+id/quantidadeEditText"
-            android:layout_width="323dp"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="31dp"
-            tools:layout_editor_absoluteY="88dp"
-            tools:text="Quantidade" />
-
-
-        <EditText
-            android:id="@+id/tipoEditText"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="150dp"
-            tools:text="Tipo" />
-
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="135dp"
-                android:layout_height="65dp"
-                android:text="Salvar"
-                tools:layout_editor_absoluteX="41dp"
-                tools:layout_editor_absoluteY="290dp" />
-            <Button
-                android:id="@+id/btnView"
-                android:layout_width="135dp"
-                android:layout_height="65dp"
-                android:text="Visualizar"
-                tools:layout_editor_absoluteX="209dp"
-                tools:layout_editor_absoluteY="290dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <ListView
+        android:id="@+id/listView"
+        style="?android:attr/expandableListViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:dividerHeight="2dp"/>
 </LinearLayout>
