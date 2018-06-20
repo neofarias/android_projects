@@ -27,7 +27,7 @@ public class ListActivity extends AppCompatActivity {
         mAdapter = new ListAdapter(this, R.layout.row, mList);
         mListView.setAdapter(mAdapter);
 
-        Cursor cursor = MainActivity.mSQLiteHelper.getData("SELECT * FROM CERVEJA");
+        Cursor cursor = MainActivity.mSQLiteHelper.getData("SELECT * FROM LIVRARIA");
         mList.clear();
 
         while(cursor.moveToNext()){

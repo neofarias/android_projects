@@ -19,7 +19,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public void insertData(String nome, String quantidade, String tipo){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO CERVEJA VALUES(null, ?, ?, ?)";
+        String sql = "INSERT INTO LIVRARIA VALUES(null, ?, ?, ?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
@@ -31,7 +31,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public void updateData(String nome, String quantidade, String tipo, int id){
             SQLiteDatabase database = getWritableDatabase();
-            String sql = "UPDATE CERVEJA SET nome = ?, quantidade = ?, tipo = ?";
+            String sql = "UPDATE LIVRARIA SET nome = ?, quantidade = ?, tipo = ?";
 
             SQLiteStatement statement = database.compileStatement(sql);
             statement.bindString(1, nome);
@@ -45,7 +45,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void deleteData(int id){
         SQLiteDatabase database = getWritableDatabase();
 
-        String sql = "DELETE FROM CERVEJA WHERE id = ?";
+        String sql = "DELETE FROM LIVRARIA WHERE id = ?";
         SQLiteStatement statement = database.compileStatement(sql);
 
         statement.clearBindings();

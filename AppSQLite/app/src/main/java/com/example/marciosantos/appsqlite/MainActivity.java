@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mEditNome, mEditQuantidade, mEditTipo;
     private Button mBtnAdd, mBtnList;
-    private ImageView mImageBeer;
+    private ImageView mImageUsers;
 
     public static SQLiteHelper mSQLiteHelper;
 
@@ -27,18 +27,12 @@ public class MainActivity extends AppCompatActivity {
         mEditTipo = findViewById(R.id.editTipo);
         mBtnAdd = findViewById(R.id.btnAdd);
         mBtnList = findViewById(R.id.btnList);
-        mImageBeer = findViewById(R.id.imageView);
+        mImageUsers = findViewById(R.id.imageView);
 
-        mSQLiteHelper = new SQLiteHelper(this, "CERVEJA.sqlite", null, 1);
-        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS CERVEJA (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, quantidade VARCHAR, tipo VARCHAR);");
-
-
-        mImageBeer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        mSQLiteHelper = new SQLiteHelper(this, "LIVRARIA.sqlite", null, 1);
+        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS LIVRARIA (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, evento VARCHAR, endereco VARCHAR, id_localizacao INTEGER, FOREIGN KEY (id_localizacao) REFERENCES MAPS (id));");
+        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS USUARIO (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, endereco VARCHAR, telefone VARCHAR. id_livraria INTEGER, id_localizacao INTEGER, FOREIGN KEY (id_livraria) REFERENCES LIVRARIA (id), FOREIGN KEY (id_localizacao) REFERENCES MAPS (id));");
+        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MAPS (id INTEGER PRIMARY KEY AUTOINCREMENT, latitude VARCHAR, longitude VARCHAR);");
 
         mBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
