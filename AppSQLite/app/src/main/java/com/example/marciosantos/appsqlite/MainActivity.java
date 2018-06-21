@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mEditNome, mEditQuantidade, mEditTipo;
+    private EditText mEditNome, mEditEndereco, mEditTelefone;
     private Button mBtnAdd, mBtnList;
-    private ImageView mImageUsers;
+    private ImageView mImageUser;
 
     public static SQLiteHelper mSQLiteHelper;
 
@@ -23,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mEditNome = findViewById(R.id.editNome);
-        mEditQuantidade = findViewById(R.id.editQuantidade);
-        mEditTipo = findViewById(R.id.editTipo);
+        mEditEndereco = findViewById(R.id.editEndereco);
+        mEditTelefone = findViewById(R.id.editTelefone);
+
         mBtnAdd = findViewById(R.id.btnAdd);
         mBtnList = findViewById(R.id.btnList);
-        mImageUsers = findViewById(R.id.imageView);
+        mImageUser = findViewById(R.id.imageView);
 
         mSQLiteHelper = new SQLiteHelper(this, "LIVRARIA.sqlite", null, 1);
         mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS LIVRARIA (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, evento VARCHAR, endereco VARCHAR, id_localizacao INTEGER, FOREIGN KEY (id_localizacao) REFERENCES MAPS (id));");
@@ -38,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    mSQLiteHelper.insertData(
+                    mSQLiteHelper.insertDataUsuario(
                             mEditNome.getText().toString().trim(),
-                            mEditQuantidade.getText().toString().trim(),
-                            mEditTipo.getText().toString().trim());
+                            mEditEndereco.getText().toString().trim(),
+                            mEditTelefone.getText().toString().trim());
 
                     Toast.makeText(MainActivity.this, "Registro Salvo com Sucesso!", Toast.LENGTH_SHORT).show();
                     mEditNome.setText("");
-                    mEditQuantidade.setText("");
-                    mEditTipo.setText("");
+                    mEditEndereco.setText("");
+                    mEditTelefone.setText("");
                 } catch(Exception e) {
                     e.printStackTrace();
                 }

@@ -17,32 +17,46 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             database.execSQL(sql);
     }
 
-    public void insertData(String nome, String quantidade, String tipo){
+    public void insertDataLivraria(String nome, String evento, String endereco, Integer id_localizacao){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO LIVRARIA VALUES(null, ?, ?, ?)";
+        String sql = "INSERT INTO LIVRARIA VALUES(null, ?, ?, ?, ?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, nome);
-        statement.bindString(2, quantidade);
-        statement.bindString(3, tipo);
+        statement.bindString(2, evento);
+        statement.bindString(3, endereco);
+        statement.bindLong(4, id_localizacao);
         statement.executeInsert();
     }
 
-    public void updateData(String nome, String quantidade, String tipo, int id){
+    public void insertDataUsuario(String nome, String endereco, String telefone){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO USUARIO VALUES(null, ?, ?, ?)";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, nome);
+        statement.bindString(2, endereco);
+        statement.bindString(3, telefone);
+        statement.executeInsert();
+    }
+
+    public void updateDataLivraria(String nome, String evento, String endereco, Integer id_localizacao, int id){
             SQLiteDatabase database = getWritableDatabase();
-            String sql = "UPDATE LIVRARIA SET nome = ?, quantidade = ?, tipo = ?";
+            String sql = "UPDATE LIVRARIA SET nome = ?, evento = ?, endereco = ?, id_localizacao = ? WHERE id = ?";
 
             SQLiteStatement statement = database.compileStatement(sql);
             statement.bindString(1, nome);
-            statement.bindString(2, quantidade);
-            statement.bindString(3, tipo);
-            statement.bindDouble(4, (double) id);
+            statement.bindString(2, evento);
+            statement.bindString(3, endereco);
+            statement.bindLong(4, id_localizacao);
+            statement.bindDouble(5, (double) id);
             statement.executeInsert();
             statement.close();
     }
 
-    public void deleteData(int id){
+    public void deleteDataLivraria(int id){
         SQLiteDatabase database = getWritableDatabase();
 
         String sql = "DELETE FROM LIVRARIA WHERE id = ?";

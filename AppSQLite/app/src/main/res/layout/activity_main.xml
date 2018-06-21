@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/ic_beer"
+            android:src="@drawable/ic_user"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"/>
 
@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:ems="10"/>
         <EditText
-            android:id="@+id/editQuantidade"
+            android:id="@+id/editEndereco"
             android:layout_below="@id/editNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,8 +38,8 @@
             android:layout_centerHorizontal="true"
             android:ems="10"/>
         <EditText
-            android:id="@+id/editTipo"
-            android:layout_below="@id/editQuantidade"
+            android:id="@+id/editTelefone"
+            android:layout_below="@id/editEndereco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Tipo"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/editTipo"
+            android:layout_below="@id/editTelefone"
             android:text="Salvar"
             style="@style/Base.Widget.AppCompat.Button.Colored"/>
         <Button

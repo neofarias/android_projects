@@ -13,22 +13,22 @@ public class ListAdapter extends BaseAdapter{
 
     private Context context;
     private int layout;
-    private ArrayList<Model> modelArrayList;
+    private ArrayList<LivrariaEntidade> livrariaEntidadeArrayList;
 
-    public ListAdapter(Context context, int layout, ArrayList<Model> modelArrayList) {
+    public ListAdapter(Context context, int layout, ArrayList<LivrariaEntidade> livrariaEntidadeArrayList) {
         this.context = context;
         this.layout = layout;
-        this.modelArrayList = modelArrayList;
+        this.livrariaEntidadeArrayList = livrariaEntidadeArrayList;
     }
 
     @Override
     public int getCount() {
-        return modelArrayList.size();
+        return livrariaEntidadeArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return modelArrayList.get(position);
+        return livrariaEntidadeArrayList.get(position);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ListAdapter extends BaseAdapter{
     }
 
     private class ViewHolder{
-        TextView txtNome, txtQuantidade, txtTipo;
+        TextView txtNome, txtEvento, txtEndereco;
     }
 
     @Override
@@ -49,17 +49,17 @@ public class ListAdapter extends BaseAdapter{
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(layout, null);
             holder.txtNome = row.findViewById(R.id.listNome);
-            holder.txtQuantidade = row.findViewById(R.id.listQuantidade);
-            holder.txtTipo = row.findViewById(R.id.listTipo);
+            holder.txtEvento = row.findViewById(R.id.listEvento);
+            holder.txtEndereco = row.findViewById(R.id.listEndereco);
             row.setTag(holder);
         } else {
             holder = (ViewHolder)row.getTag();
         }
 
-        Model model = modelArrayList.get(position);
-        holder.txtNome.setText(model.getNome());
-        holder.txtQuantidade.setText(model.getQuantidade());
-        holder.txtTipo.setText(model.getTipo());
+        LivrariaEntidade livrariaEntidade = livrariaEntidadeArrayList.get(position);
+        holder.txtNome.setText(livrariaEntidade.getNome());
+        holder.txtEvento.setText(livrariaEntidade.getEvento());
+        holder.txtEndereco.setText(livrariaEntidade.getEndereco());
 
         return row;
     }

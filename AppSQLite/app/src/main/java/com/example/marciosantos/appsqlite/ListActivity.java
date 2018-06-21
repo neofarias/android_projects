@@ -3,8 +3,6 @@ package com.example.marciosantos.appsqlite;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,9 +11,8 @@ import java.util.ArrayList;
 public class ListActivity extends AppCompatActivity {
 
     private ListView mListView;
-    private ArrayList<Model> mList;
+    private ArrayList<LivrariaEntidade> mList;
     private ListAdapter mAdapter = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +30,10 @@ public class ListActivity extends AppCompatActivity {
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
             String nome = cursor.getString(1);
-            String quantidade = cursor.getString(2);
-            String tipo = cursor.getString(3);
+            String evento = cursor.getString(2);
+            String endereco = cursor.getString(3);
 
-            mList.add(new Model(id, nome, quantidade, tipo));
+            mList.add(new LivrariaEntidade(id, nome, evento, endereco));
         }
 
         mAdapter.notifyDataSetChanged();
@@ -44,8 +41,6 @@ public class ListActivity extends AppCompatActivity {
         if(mList.size() == 0){
             Toast.makeText(this, "Não existem registros salvos!", Toast.LENGTH_SHORT).show();
         }
-
-
-
     }
+
 }

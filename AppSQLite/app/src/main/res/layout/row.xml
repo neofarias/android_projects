@@ -14,18 +14,23 @@
 
             <TextView
                 android:id="@+id/listNome"
-                android:textSize="20dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/listQuantidade"
-                android:textSize="16dp"
+                android:id="@+id/listEvento"
+                android:textSize="22dp"
                 android:textStyle="italic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/listTipo"
+                android:id="@+id/listEndereco"
+                android:textSize="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/listLocalizacao"
                 android:textSize="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
