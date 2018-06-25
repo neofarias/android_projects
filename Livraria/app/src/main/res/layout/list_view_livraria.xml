@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/paddingTen">
+
+        <ImageView
+            android:id="@+id/imageTipoLivraria"
+            android:layout_width="@dimen/imageWidth"
+            android:layout_height="@dimen/imageHeight"
+            android:layout_weight="0.11"
+            android:padding="@dimen/paddingFour"
+            android:layout_marginRight="@dimen/paddingTen"/>
+
+        <TextView
+            android:id="@+id/nameLivraria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/imageTipo"
+            android:textSize="@dimen/paddingTwenty"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:id="@+id/enderecoLivraria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageTipo"
+            android:layout_below="@id/name_restaurant"
+            android:textSize="@dimen/paddingFourteen"
+            android:textColor="@color/colorAddress"/>
+
+        <TextView
+            android:id="@+id/tipoEvento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageTipo"
+            android:layout_below="@id/endereco_restaurant"
+            android:textSize="@dimen/paddingTwelve"
+            android:textColor="@color/colorType"/>
+
+    </RelativeLayout>
+</LinearLayout>
