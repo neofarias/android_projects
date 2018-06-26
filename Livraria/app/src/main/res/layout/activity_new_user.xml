@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UsersActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_usuarios"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/editNome"
+            android:layout_below="@id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:layout_centerHorizontal="true"
+            android:ems="10"/>
+        <EditText
+            android:id="@+id/editTelefone"
+            android:layout_below="@id/editNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Telefone"
+            android:layout_centerHorizontal="true"
+            android:ems="10"/>
+        <EditText
+            android:id="@+id/editEndereco"
+            android:layout_below="@id/editTelefone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Endereço"
+            android:layout_centerHorizontal="true"
+            android:ems="10"/>
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/editEndereco"
+            android:text="Salvar"
+            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+    </RelativeLayout>
+
+</LinearLayout>

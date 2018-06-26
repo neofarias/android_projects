@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/imageTipo"
+            android:layout_toRightOf="@id/imageTipoLivraria"
             android:textSize="@dimen/paddingTwenty"
             android:textColor="@color/colorPrimaryDark"/>
 
@@ -31,8 +32,8 @@
             android:id="@+id/enderecoLivraria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imageTipo"
-            android:layout_below="@id/name_restaurant"
+            android:layout_toRightOf="@id/imageTipoLivraria"
+            android:layout_below="@id/nameLivraria"
             android:textSize="@dimen/paddingFourteen"
             android:textColor="@color/colorAddress"/>
 
@@ -40,8 +41,8 @@
             android:id="@+id/tipoEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imageTipo"
-            android:layout_below="@id/endereco_restaurant"
+            android:layout_toRightOf="@id/imageTipoLivraria"
+            android:layout_below="@id/enderecoLivraria"
             android:textSize="@dimen/paddingTwelve"
             android:textColor="@color/colorType"/>
 

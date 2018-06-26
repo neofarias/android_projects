@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UsersActivity" android:parentActivityName=".MainActivity" android:label="@string/listaUsuarios">
+        <activity android:name=".UsersActivity" android:parentActivityName=".MainActivity" android:label="@string/newUser">
+        </activity>
 
-
+        <activity android:name=".ListaUsersActivity" android:parentActivityName=".MainActivity" android:label="@string/listaUsuarios">
         </activity>
     </application>
 
