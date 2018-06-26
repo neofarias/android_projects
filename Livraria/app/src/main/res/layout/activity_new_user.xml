@@ -45,12 +45,20 @@
             android:hint="Endereço"
             android:layout_centerHorizontal="true"
             android:ems="10"/>
+        <Spinner
+            android:id="@+id/spinnerSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editEndereco"
+            android:layout_centerHorizontal="true"
+            android:entries="@array/typeList"
+            android:spinnerMode="dropdown"/>
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/editEndereco"
+            android:layout_below="@id/spinnerSexo"
             android:text="Salvar"
             style="@style/Base.Widget.AppCompat.Button.Colored"/>
     </RelativeLayout>

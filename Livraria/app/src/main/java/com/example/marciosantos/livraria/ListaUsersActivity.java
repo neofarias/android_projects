@@ -16,9 +16,8 @@ import entidades.Usuario;
 
 public class ListaUsersActivity extends AppCompatActivity {
 
-    public static SQLiteHelper mSQLiteHelper;
     private ListView mListView;
-    private ListAdapter mAdapter = null;
+    private ListAdapterUser mAdapter = null;
     private ArrayList<Usuario> mList;
     private ListView lv;
 
@@ -32,10 +31,10 @@ public class ListaUsersActivity extends AppCompatActivity {
 
         mListView = findViewById(R.id.listViewUsers);
         mList = new ArrayList<>();
-        mAdapter = new ListAdapter(this, R.layout.list_view_usuarios, mList);
+        mAdapter = new ListAdapterUser(this, R.layout.list_view_usuarios, mList);
         mListView.setAdapter(mAdapter);
 
-        Cursor cursor = MainActivity.mSQLiteHelper.getData("Select * from USUARIO");
+        Cursor cursor = UsersActivity.mSQLiteHelper.getData("Select * from USUARIO");
         mList.clear();
 
         while (cursor.moveToNext()){
@@ -43,8 +42,9 @@ public class ListaUsersActivity extends AppCompatActivity {
             String nome = cursor.getString(1);
             String telefone = cursor.getString(2);
             String endereco = cursor.getString(3);
+            String sexo = cursor.getString(4);
 
-            mList.add(new Usuario(id, nome, telefone, endereco));
+            mList.add(new Usuario(id, nome, telefone, endereco, sexo));
         }
 
         mAdapter.notifyDataSetChanged();

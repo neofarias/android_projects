@@ -6,12 +6,14 @@ public class Usuario {
     private String nome;
     private String telefone;
     private String endereco;
+    private String sexo;
 
-    public Usuario(int id, String nome, String telefone, String endereco) {
+    public Usuario(int id, String nome, String telefone, String endereco, String sexo) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.sexo = sexo;
     }
 
     public int getId() {
@@ -44,5 +46,13 @@ public class Usuario {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 }

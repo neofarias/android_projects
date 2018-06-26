@@ -22,15 +22,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return database.rawQuery(sql, null);
     }
 
-    public void insertDataUsuario(String nome, String endereco, String telefone){
+    public void insertDataUsuario(String nome, String telefone, String endereco, String sexo){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO USUARIO VALUES(null, ?, ?, ?)";
+        String sql = "INSERT INTO USUARIO VALUES(null, ?, ?, ?, ?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, nome);
         statement.bindString(2, telefone);
         statement.bindString(3, endereco);
+        statement.bindString(4, sexo);
         statement.executeInsert();
     }
 
@@ -60,7 +61,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
     }
 
     @Override

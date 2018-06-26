@@ -11,7 +11,8 @@
             android:layout_height="@dimen/imageHeight"
             android:layout_weight="0.11"
             android:padding="@dimen/paddingFour"
-            android:layout_marginRight="@dimen/paddingTen"/>
+            android:layout_marginRight="@dimen/paddingTen"
+            android:src="@drawable/ic_usuarios"/>
 
         <TextView
             android:id="@+id/name_user"
@@ -39,5 +40,14 @@
             android:layout_below="@id/telefone_user"
             android:textSize="@dimen/paddingTwelve"
             android:textColor="@color/colorType"/>
+
+        <TextView
+            android:id="@+id/sexo_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageUser"
+            android:layout_below="@id/endereco_user"
+            android:textSize="@dimen/paddingTen"
+            android:textColor="@color/colorAccent"/>
 
     </RelativeLayout>

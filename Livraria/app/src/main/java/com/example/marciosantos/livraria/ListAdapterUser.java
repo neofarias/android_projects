@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 import entidades.Usuario;
 
-public class ListAdapter extends BaseAdapter {
+public class ListAdapterUser extends BaseAdapter {
 
     private Context context;
     private int layout;
     private ArrayList<Usuario> usuariosArrayList;
 
-    public ListAdapter(Context context, int layout, ArrayList<Usuario> usuariosArrayList) {
+    public ListAdapterUser(Context context, int layout, ArrayList<Usuario> usuariosArrayList) {
         this.context = context;
         this.layout = layout;
         this.usuariosArrayList = usuariosArrayList;
@@ -39,7 +39,7 @@ public class ListAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView txtNome, txtTelefone, txtEndereco;
+        TextView txtNome, txtTelefone, txtEndereco, txtSexo;
     }
 
     @Override
@@ -53,6 +53,7 @@ public class ListAdapter extends BaseAdapter {
             holder.txtNome = row.findViewById(R.id.name_user);
             holder.txtTelefone = row.findViewById(R.id.telefone_user);
             holder.txtEndereco = row.findViewById(R.id.endereco_user);
+            holder.txtSexo = row.findViewById(R.id.sexo_user);
             row.setTag(holder);
         } else {
             holder = (ViewHolder)row.getTag();
@@ -62,6 +63,7 @@ public class ListAdapter extends BaseAdapter {
         holder.txtNome.setText(usuario.getNome());
         holder.txtTelefone.setText(usuario.getTelefone());
         holder.txtEndereco.setText(usuario.getEndereco());
+        holder.txtSexo.setText(usuario.getSexo());
 
         return row;
     }
