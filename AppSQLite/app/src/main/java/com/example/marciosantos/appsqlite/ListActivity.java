@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.marciosantos.appsqlite.R.layout.row;
+
 public class ListActivity extends AppCompatActivity {
 
     private ListView mListView;
@@ -21,7 +23,7 @@ public class ListActivity extends AppCompatActivity {
 
         mListView = findViewById(R.id.listView);
         mList = new ArrayList<>();
-        mAdapter = new ListAdapter(this, R.layout.row, mList);
+        mAdapter = new ListAdapter(this, row, mList);
         mListView.setAdapter(mAdapter);
 
         Cursor cursor = MainActivity.mSQLiteHelper.getData("SELECT * FROM LIVRARIA");
