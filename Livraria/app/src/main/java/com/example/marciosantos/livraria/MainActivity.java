@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static SQLiteHelper mSQLiteHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setLogo(R.drawable.ic_user_add);
         actionBar.setLogo(R.drawable.ic_user_list);
         actionBar.setDisplayUseLogoEnabled(true);
+
+        mSQLiteHelper = new SQLiteHelper(this, "LIVRARIA.sqlite", null, 1);
+        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MAPS (id INTEGER PRIMARY KEY AUTOINCREMENT, latitude VARCHAR, longitude VARCHAR);");
+        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS USUARIO (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, telefone VARCHAR, endereco VARCHAR, sexo VARCHAR);");
     }
 
     @Override
@@ -45,4 +51,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void criarLivrarias(){
+        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS LIVRARIA (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, evento VARCHAR, endereco VARCHAR, id_localizacao INTEGER, FOREIGN KEY (id_localizacao) REFERENCES MAPS (id));");
+
+    }
+
 }

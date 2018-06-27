@@ -13,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import entidades.Usuario;
+
 public class UsersActivity extends AppCompatActivity {
 
-    public static SQLiteHelper mSQLiteHelper;
     private EditText mNome, mEndereco, mTelefone;
     private Button btnAdd;
     private Spinner spinner;
@@ -26,10 +27,8 @@ public class UsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
-        mSQLiteHelper = new SQLiteHelper(this, "LIVRARIA.sqlite", null, 1);
-        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS LIVRARIA (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, evento VARCHAR, endereco VARCHAR, id_localizacao INTEGER, FOREIGN KEY (id_localizacao) REFERENCES MAPS (id));");
-        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MAPS (id INTEGER PRIMARY KEY AUTOINCREMENT, latitude VARCHAR, longitude VARCHAR);");
-        mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS USUARIO (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, telefone VARCHAR, endereco VARCHAR, sexo VARCHAR);");
+        Intent intent = getIntent();
+        final Usuario usuario = intent.getParcelableExtra("Entidade");
 
         ImageView imgTipo = findViewById(R.id.imageView);
         imgTipo.setImageResource(R.drawable.ic_usuarios);
@@ -37,6 +36,10 @@ public class UsersActivity extends AppCompatActivity {
         mTelefone = findViewById(R.id.editTelefone);
         mEndereco = findViewById(R.id.editEndereco);
         btnAdd = findViewById(R.id.btnAdd);
+
+        mNome.setText("");
+        mTelefone.setText("");
+        mEndereco.setText("");
 
         //Spinner
         spinner = findViewById(R.id.spinnerSexo);
@@ -55,21 +58,35 @@ public class UsersActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+        if(usuario != null){
+            mNome.setText(usuario.getNome());
+            mTelefone.setText(usuario.getTelefone());
+            mEndereco.setText(usuario.getEndereco());
+            valueSexo = usuario.getSexo();
+        }
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    mSQLiteHelper.insertDataUsuario(
-                            mNome.getText().toString().trim(),
-                            mTelefone.getText().toString().trim(),
-                            mEndereco.getText().toString().trim(),
-                            valueSexo);
-                            Toast.makeText(UsersActivity.this, "Registro Salvo com Sucesso!", Toast.LENGTH_SHORT).show();
-
-                            mNome.setText("");
-                            mTelefone.setText("");
-                            mEndereco.setText("");
-                            listaUsuariosSalvos();
+                    if(usuario == null) {
+                        MainActivity.mSQLiteHelper.insertDataUsuario(
+                                mNome.getText().toString().trim(),
+                                mTelefone.getText().toString().trim(),
+                                mEndereco.getText().toString().trim(),
+                                valueSexo);
+                        Toast.makeText(UsersActivity.this, "Registro Salvo com Sucesso!", Toast.LENGTH_SHORT).show();
+                        listaUsuariosSalvos();
+                    } else {
+                        MainActivity.mSQLiteHelper.updateDataUsuario(
+                                mNome.getText().toString().trim(),
+                                mTelefone.getText().toString().trim(),
+                                mEndereco.getText().toString().trim(),
+                                valueSexo,
+                                usuario.getId());
+                        Toast.makeText(UsersActivity.this, "Registro Salvo com Sucesso!", Toast.LENGTH_SHORT).show();
+                        listaUsuariosSalvos();
+                    }
                 } catch (Exception e){
                     e.printStackTrace();
                 }

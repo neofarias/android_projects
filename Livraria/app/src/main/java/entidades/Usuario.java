@@ -1,6 +1,9 @@
 package entidades;
 
-public class Usuario {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Usuario implements Parcelable {
 
     private int id;
     private String nome;
@@ -14,6 +17,30 @@ public class Usuario {
         this.telefone = telefone;
         this.endereco = endereco;
         this.sexo = sexo;
+    }
+
+    protected Usuario(Parcel in) {
+        id = in.readInt();
+        nome = in.readString();
+        telefone = in.readString();
+        endereco = in.readString();
+        sexo = in.readString();
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
+    public Usuario() {
+
     }
 
     public int getId() {
@@ -54,5 +81,19 @@ public class Usuario {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nome);
+        dest.writeString(telefone);
+        dest.writeString(endereco);
+        dest.writeString(sexo);
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Livraria</string>
     <string name="listaUsuarios">Lista de Usuários</string>
-    <string name="newUser">Novo Usuário</string>
+    <string name="newUser">Usuário</string>
 
     <string-array name="typeList">
         <item>Feminino</item>

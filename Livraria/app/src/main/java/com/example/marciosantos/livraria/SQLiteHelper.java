@@ -35,15 +35,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         statement.executeInsert();
     }
 
-    public void updateDataUsuario(String nome, String telefone, String endereco, int id){
+    public void updateDataUsuario(String nome, String telefone, String endereco, String sexo,  int id){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE USUARIO set nome = ?, telefone = ?, endereco = ? WHERE id = ? ";
+        String sql = "UPDATE USUARIO set nome = ?, telefone = ?, endereco = ?, sexo = ? WHERE id = ? ";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.bindString(1, nome);
         statement.bindString(2, telefone);
         statement.bindString(3, endereco);
-        statement.bindLong(4, (long) id);
+        statement.bindString(4, sexo);
+        statement.bindLong(5, (long) id);
         statement.executeInsert();
         statement.close();
     }
