@@ -17,6 +17,7 @@
             android:layout_height="@dimen/imageHeight"
             android:layout_weight="0.11"
             android:padding="@dimen/paddingFour"
+            android:src="@drawable/ic_book"
             android:layout_marginRight="@dimen/paddingTen"/>
 
         <TextView
@@ -29,7 +30,7 @@
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
-            android:id="@+id/enderecoLivraria"
+            android:id="@+id/eventoLivraria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imageTipoLivraria"
@@ -38,11 +39,11 @@
             android:textColor="@color/colorAddress"/>
 
         <TextView
-            android:id="@+id/tipoEvento"
+            android:id="@+id/enderecoEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imageTipoLivraria"
-            android:layout_below="@id/enderecoLivraria"
+            android:layout_below="@id/eventoLivraria"
             android:textSize="@dimen/paddingTwelve"
             android:textColor="@color/colorType"/>
 
