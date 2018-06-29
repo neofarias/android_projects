@@ -1,18 +1,18 @@
 package com.example.marciosantos.livraria;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.support.v4.view.ActionProvider;
-import android.support.v4.view.MenuItemCompat;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 import entidades.Livraria;
 import entidades.Maps;
-import entidades.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ListAdapterLivraria mAdapter = null;
     private ArrayList<Livraria> mList;
     private Double latitude, longitude;
+    private String txtPesquisa;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_actions, menu);
-
-        //MenuItem searchItem = menu.findItem(R.id.search_button);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -108,11 +106,25 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public boolean onQueryTextChange(String newText) {
+                        Cursor cursor = MainActivity.mSQLiteHelper.getData("Select * from LIVRARIA where nome like "+"'"+"%"+newText+"%"+"'");
 
-                        return false;
+                        ArrayList<Livraria> mListTemp;
+                        mListTemp = new ArrayList<>();
+                        mAdapter = new ListAdapterLivraria(MainActivity.this, R.layout.list_view_livraria, mListTemp);
+                        mListView.setAdapter(mAdapter);
+
+                        while (cursor.moveToNext()){
+                            int id = cursor.getInt(0);
+                            String nome = cursor.getString(1);
+                            String evento = cursor.getString(2);
+                            String endereco = cursor.getString(3);
+                            mListTemp.add(new Livraria(id, nome, evento, endereco));
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        txtPesquisa = newText;
+                        return true;
                     }
                 });
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -126,15 +138,25 @@ public class MainActivity extends AppCompatActivity {
             String nome = cursor.getString(1);
             String evento = cursor.getString(2);
             String endereco = cursor.getString(3);
-
             mList.add(new Livraria(id, nome, evento, endereco));
         }
-
         mAdapter.notifyDataSetChanged();
 
         if(mList.size() == 0){
             Toast.makeText(this, "Não existem registros salvos!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        this.sharedPreferences = getSharedPreferences(txtPesquisa, Context.MODE_PRIVATE);
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
     }
 
     public void criarLivrarias(){
