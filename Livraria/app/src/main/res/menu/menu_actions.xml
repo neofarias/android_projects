@@ -12,4 +12,10 @@
         android:title="Listar Usuário"
         android:icon="@drawable/ic_user_list"
         app:showAsAction="always"/>
+
+    <item android:id="@+id/search_button"
+        android:title="Pesquisar"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always"/>
+
 </menu>

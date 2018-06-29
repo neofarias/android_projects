@@ -2,6 +2,8 @@ package com.example.marciosantos.livraria;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v4.view.ActionProvider;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -78,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_actions, menu);
+
+        //MenuItem searchItem = menu.findItem(R.id.search_button);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -92,6 +98,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentListUser = new Intent(MainActivity.this, ListaUsersActivity.class);
                 startActivity(intentListUser);
                 break;
+            case R.id.search_button:
+                SearchView view = (SearchView) item.getActionView();
+                view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+
+                        return false;
+                    }
+                });
+
         }
         return super.onOptionsItemSelected(item);
     }
