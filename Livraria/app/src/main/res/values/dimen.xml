@@ -15,4 +15,6 @@
     <dimen name="spinnerHeight">38dp</dimen>
     <dimen name="imageWidth">80dp</dimen>
     <dimen name="imageHeight">80dp</dimen>
+    <dimen name="imageBookWidth">50dp</dimen>
+    <dimen name="imageBookHeight">50dp</dimen>
 </resources>

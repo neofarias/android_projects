@@ -13,11 +13,20 @@
 
         <ImageView
             android:id="@+id/imageTipoLivraria"
-            android:layout_width="@dimen/imageWidth"
-            android:layout_height="@dimen/imageHeight"
+            android:layout_width="@dimen/imageBookWidth"
+            android:layout_height="@dimen/imageBookHeight"
             android:layout_weight="0.11"
             android:padding="@dimen/paddingFour"
             android:src="@drawable/ic_book"
+            android:layout_marginRight="@dimen/paddingTen"/>
+
+        <ImageView
+            android:id="@+id/imageMapsLivraria"
+            android:layout_width="@dimen/imageBookWidth"
+            android:layout_height="@dimen/imageBookHeight"
+            android:layout_weight="0.11"
+            android:padding="@dimen/paddingFour"
+            android:layout_below="@+id/imageTipoLivraria"
             android:layout_marginRight="@dimen/paddingTen"/>
 
         <TextView

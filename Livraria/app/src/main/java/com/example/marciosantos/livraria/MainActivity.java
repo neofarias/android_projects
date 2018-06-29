@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import entidades.Livraria;
+import entidades.Maps;
+import entidades.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mListView;
     private ListAdapterLivraria mAdapter = null;
     private ArrayList<Livraria> mList;
+    private Double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,31 @@ public class MainActivity extends AppCompatActivity {
         mSQLiteHelper = new SQLiteHelper(this, "LIVRARIA.sqlite", null, 1);
         mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS USUARIO (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, telefone VARCHAR, endereco VARCHAR, sexo VARCHAR);");
 
-       // this.criaMapas();
-       // this.criarLivrarias();
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                id = id + 1;
+                Cursor c = MainActivity.mSQLiteHelper.getData("SELECT * FROM MAPS WHERE id =" + id);
+                while (c.moveToNext()){
+                    id = c.getInt(0);
+                    latitude = c.getDouble(1);
+                    longitude = c.getDouble(2);
+                }
+
+                Maps entidade = new Maps();
+                position = Integer.parseInt(String.valueOf(id));
+                entidade.setId(position);
+                entidade.setLatitude(latitude);
+                entidade.setLongitude(longitude);
+
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                intent.putExtra("EntidadeMaps", entidade);
+                startActivity(intent);
+            }
+        });
+
+        //this.criaMapas();
+        //this.criarLivrarias();
         this.montaListaLivraria();
     }
 

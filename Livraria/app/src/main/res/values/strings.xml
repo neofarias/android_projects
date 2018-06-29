@@ -7,4 +7,5 @@
         <item>Feminino</item>
         <item>Masculino</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
